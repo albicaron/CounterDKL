@@ -1,7 +1,7 @@
 from Code.Simulation.utils import *
 from Code.models.ScalableCounterfactual_DKL import *
 
-datasets = ['australian', 'tae', 'heart', 'cmc']
+datasets = ['australian', 'yeast', 'heart', 'cmc']
 models = ['GP', 'CounterGP', 'DKL', 'CounterDKL']
 
 bias_mod = {}
