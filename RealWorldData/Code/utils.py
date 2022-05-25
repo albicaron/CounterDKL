@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats as sts
 
-
 # Function Definition
 def bias(T_true, T_est):
     return np.mean(T_true.reshape((-1, 1)) - T_est.reshape((-1, 1)))
@@ -281,6 +280,7 @@ def simulated_study_2(N=500, P=5, rng=1):
 
     return X, A_, Y, C, Y_true, C_true
 
+
 def plot_confound(X, A, Y, C):
 
   fig, axs = plt.subplots(1, 2, figsize=(14, 6))
@@ -297,5 +297,3 @@ def plot_confound(X, A, Y, C):
   plt.show()
 
   return axs
-
-

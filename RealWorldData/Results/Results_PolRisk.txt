@@ -1,0 +1,56 @@
+GP
+Train MAE: 0.0328  SE: 0.0061
+Test MAE: 0.0358  SE: 0.0078
+Train Pol Risk: 0.2212  SE: 0.0154
+Test Pol Risk: 0.273  SE: 0.0211
+Runtime (s): 171.34298  SE: 16.11711
+
+CounterGP
+Train MAE: 0.0325  SE: 0.006
+Test MAE: 0.0352  SE: 0.0069
+Train Pol Risk: 0.2413  SE: 0.0115
+Test Pol Risk: 0.2742  SE: 0.023
+Runtime (s): 248.65051  SE: 6.36207
+
+PCAGP
+Train MAE: 0.0734  SE: 0.0019
+Test MAE: 0.0738  SE: 0.0027
+Train Pol Risk: 0.2198  SE: 0.0118
+Test Pol Risk: 0.2673  SE: 0.0183
+Runtime (s): 66.2838  SE: 2.42026
+
+PCAcounterGP
+Train MAE: 0.0743  SE: 0.0012
+Test MAE: 0.0743  SE: 0.0013
+Train Pol Risk: 0.228  SE: 0.0149
+Test Pol Risk: 0.259  SE: 0.0159
+Runtime (s): 126.09724  SE: 3.87909
+
+AutoGP
+Train MAE: 0.0746  SE: 0.0041
+Test MAE: 0.0744  SE: 0.0034
+Train Pol Risk: 0.2134  SE: 0.0283
+Test Pol Risk: 0.2704  SE: 0.0231
+Runtime (s): 75.99606  SE: 2.96053
+
+AutoCountGP
+Train MAE: 0.076  SE: 0.0032
+Test MAE: 0.0762  SE: 0.0034
+Train Pol Risk: 0.2384  SE: 0.0152
+Test Pol Risk: 0.3016  SE: 0.0347
+Runtime (s): 138.66576  SE: 9.19714
+
+DKL
+Train MAE: 0.0287  SE: 0.0117
+Test MAE: 0.0421  SE: 0.015
+Train Pol Risk: 0.1968  SE: 0.0127
+Test Pol Risk: 0.2113  SE: 0.017
+Runtime (s): 44.82263  SE: 3.34615
+
+CounterDKL
+Train MAE: 0.011  SE: 0.003
+Test MAE: 0.0151  SE: 0.0056
+Train Pol Risk: 0.2195  SE: 0.0131
+Test Pol Risk: 0.2551  SE: 0.0259
+Runtime (s): 122.70592  SE: 7.40503
+
