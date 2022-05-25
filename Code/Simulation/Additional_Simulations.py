@@ -10,13 +10,13 @@ for df in datasets:
     for mod in models:
         bias_mod[df].update({mod: []})
 
-B = 10
+B = 20
 
 for df in datasets:
 
     X, A = get_data(df, scale=True)
 
-    for b in range(2, B):
+    for b in range(B):
 
         print('\n\nDataset: %s, Iteration: %s' % (df, b+1))
 
