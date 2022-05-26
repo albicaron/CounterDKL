@@ -1,7 +1,8 @@
+import os
 from Code.Simulation.utils import *
 from Code.models.ScalableCounterfactual_DKL import *
 
-datasets = ['australian', 'yeast', 'heart', 'cmc']
+datasets = ['indian', 'yeast', 'heart', 'cmc']
 models = ['GP', 'CounterGP', 'DKL', 'CounterDKL']
 
 bias_mod = {}
@@ -24,6 +25,11 @@ for df in datasets:
         torch.manual_seed(b*2 + 20)
         torch.cuda.manual_seed(b*2 + 20)
         np.random.seed(b*2 + 20)
+
+        # Removing outlier values
+        if df is 'indian':
+            A = np.delete(A, np.where(X > 7)[0], axis=0)
+            X = np.delete(X, np.where(X > 7)[0], axis=0)
 
         if np.min(np.unique(A)) is not 0:
             A = A - np.min(np.unique(A))
@@ -62,7 +68,7 @@ for df in datasets:
 
         #### Counterfactual DKL
         model_DKL = CounterDKL(train_x=X, train_a=A, train_y=Y.reshape(-1, 1),
-                               input_dim=P, GPtype='single', hidden_layers=[5, 5, 2], GPU=True)
+                               input_dim=P, GPtype='single', hidden_layers=[2, 5, 2], GPU=True)
         model_DKL.train(training_iter=50, learn_rate=0.01)
         counter_DKL = np.array(model_DKL.predict(X)).transpose()
 
@@ -73,7 +79,7 @@ for df in datasets:
 
         #### Counterfactual Multitask DKL
         model_MDKL = CounterDKL(train_x=X, train_a=A, train_y=Y.reshape(-1, 1),
-                                input_dim=P, GPtype='multitask', hidden_layers=[5, 5, 2], GPU=True)
+                                input_dim=P, GPtype='multitask', hidden_layers=[2, 5, 2], GPU=True)
         model_MDKL.train(training_iter=50, learn_rate=0.01)
         counter_MDKL = np.array(model_MDKL.predict(X)).transpose()
 
@@ -86,3 +92,9 @@ for name, elem in bias_mod.items():
     print('\n\n%s\n' % name)
     for mod, bias in elem.items():
         print('%s - bias: %f, SE: %f' % (mod, np.mean(bias), MC_se(bias, B)))
+
+with open('./Results/Results_AdditionalSimul.txt', 'w') as f:
+    for name, elem in bias_mod.items():
+        f.write('\n\n%s\n' % name)
+        for mod, bias in elem.items():
+            f.write('%s - bias: %f, SE: %f' % (mod, np.mean(bias), MC_se(bias, B)))

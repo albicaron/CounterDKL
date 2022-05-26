@@ -22,7 +22,7 @@ def MAE(T_true, T_est):
 
 
 def MC_se(x, B):
-    return sts.t.ppf(0.975, B - 1) * np.std(np.array(x)) / np.sqrt(B)
+    return sts.t.ppf(0.9, B - 1) * np.std(np.array(x)) / np.sqrt(B)
 
 
 # Train-Test Split
@@ -328,10 +328,10 @@ def get_data(dataset: str = None, scale: bool = True) -> tuple:
     """
 
     if dataset not in ['australian', 'ecoli', 'glass', 'letter-recognition', 'heart', 'yeast',
-                       'digits', 'breast-cancer', 'wine', 'mnist', 'cmc', 'tae']:
+                       'digits', 'indian', 'cmc', 'tae']:
         raise ValueError("Invalid dataset provided.")
 
-    if dataset in dataset in ['ecoli', 'glass', 'cmc', 'tae',
+    if dataset in dataset in ['ecoli', 'glass', 'cmc', 'tae', 'indian'
                               'letter-recognition', 'yeast']:
         path = 'https://archive.ics.uci.edu/ml/machine-learning-databases/'
         f = path + dataset + "/" + dataset + ".data"
@@ -341,10 +341,14 @@ def get_data(dataset: str = None, scale: bool = True) -> tuple:
     elif dataset == 'heart':
         path = 'https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/'
         f = path + dataset + "/" + dataset + ".dat"
+    elif dataset == 'indian':
+        f = 'https://archive.ics.uci.edu/ml/machine-learning-databases/00225/Indian Liver Patient Dataset (ILPD).csv'
+        f = f.replace(" ", "%20")
 
     if dataset in ['australian', 'heart', 'ecoli', 'yeast']:
         df = pd.read_table(f, delim_whitespace=True, header=None)
-    elif dataset in ['tae', 'cmc', 'glass', 'letter-recognition', 'lymphography']:
+    elif dataset in ['tae', 'cmc', 'glass', 'letter-recognition', 'lymphography',
+                     'indian']:
         df = pd.read_csv(f, header=None)
     elif dataset == 'digits':
         df = load_digits()
@@ -390,6 +394,12 @@ def get_data(dataset: str = None, scale: bool = True) -> tuple:
     elif dataset == 'yeast':
         y = preprocessing.LabelEncoder().fit_transform(df.iloc[:, -1])
         X = df.iloc[:, 1:9].values
+
+    elif dataset == 'indian':
+        df = df.dropna()
+        y = df.iloc[:, -1].values
+        X = df.iloc[:, 0:(df.shape[1] - 1)].values
+        X[:, 1] = np.where(X[:, 1] == 'Male', 1.0, 0.0)
 
     elif dataset == 'mnist':
         X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
