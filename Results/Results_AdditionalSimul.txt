@@ -1,0 +1,18 @@
+
+indian
+GP - bias: 0.389719, SE: 0.131432
+CounterGP - bias: 0.392106, SE: 0.131307
+DKL - bias: 0.375956, SE: 0.131758
+CounterDKL - bias: 0.347538, SE: 0.132288
+
+australian
+GP - bias: 3.975465, SE: 3.134612CounterGP - bias: 6.338693, SE: 3.336463DKL - bias: 2.409068, SE: 5.172341CounterDKL - bias: 1.937413, SE: 4.121898
+
+yeast
+GP - bias: -0.534314, SE: 0.209231CounterGP - bias: -0.657069, SE: 0.408503DKL - bias: -1.314420, SE: 0.743601CounterDKL - bias: -0.081279, SE: 0.150086
+
+heart
+GP - bias: 2.552797, SE: 0.653233CounterGP - bias: 1.076450, SE: 0.292393DKL - bias: 0.433337, SE: 0.198220CounterDKL - bias: 0.410025, SE: 0.157500
+
+cmc
+GP - bias: 0.338786, SE: 0.030326CounterGP - bias: -0.002622, SE: 0.008717DKL - bias: 0.008040, SE: 0.011955CounterDKL - bias: 0.007764, SE: 0.005904
