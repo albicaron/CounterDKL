@@ -6,7 +6,8 @@ import matplotlib.pyplot as plt
 def RMSE(T_true, T_est):
     return np.sqrt(np.mean((T_true.reshape((-1, 1)) - T_est.reshape((-1, 1)))**2))
 
-def generate_data(N, rng):
+
+def generate_data(N, rng, similar=True):
     # Set seed
     np.random.seed(rng)
 
@@ -18,10 +19,18 @@ def generate_data(N, rng):
     pscore = sts.norm.cdf(und_lin)
     A = sts.binom.rvs(1, pscore)
 
-    # Generate Y
-    Y_0 = 2 + 0.3*np.exp(X)
-    Y_1 = 3 + Y_0
-    ITE = Y_1 - Y_0
+    if similar:
+
+        # Generate Y
+        Y_0 = 2 + 0.3*np.exp(X)
+        Y_1 = 3 + Y_0
+        ITE = Y_1 - Y_0
+
+    elif not similar:
+        # Generate Y
+        Y_0 = 2 + 0.3*X
+        Y_1 = 5 + 0.3*np.exp(X)
+        ITE = Y_1 - Y_0
 
     sigma_Y = 0.75
     Y = Y_0 + ITE*A + sts.norm.rvs(0, sigma_Y, N)
