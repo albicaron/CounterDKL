@@ -1,2 +1,4 @@
 # CounterDKL
-Pytorch implementation of Counterfactual DKL models.
+GPytorch implementation of Counterfactual DKL models.
+
+## More info coming
