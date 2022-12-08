@@ -1,5 +1,5 @@
 # `CounterDKL`
-[GPyTorch](https://gpytorch.ai/) implementation of Counterfactual Learning with Multioutput Deep Kernels, from [Caron et. al. (2022)](https://openreview.net/pdf?id=iGREAJdULX).
+[GPyTorch](https://gpytorch.ai/) implementation of Counterfactual Learning with Multioutput Deep Kernels, from [Caron et. al. (2022)](https://openreview.net/pdf?id=iGREAJdULX). The folders contain all necessary code to replicate examples and simulated studies in the original paper.
 
 ## Why Counterfactual Multitask Learning with Deep Kernels?
 
